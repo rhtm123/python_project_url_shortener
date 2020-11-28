@@ -96,7 +96,7 @@
             function myFunction() {
               
               let x = document.getElementById("url").value;
-              let root_url = window.location.origin;
+              let root_url = window.location.hostname;
               let url = root_url+"/create/?url="+x; 
               fetch(url)
                 .then(response => response.json())
