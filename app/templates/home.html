@@ -1,0 +1,140 @@
+ <!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+
+        <link rel="icon" type="image/png" href="https://www.thelearningsetu.com/static/img/logo_v2_favicon.png">
+
+        <style>
+            a {
+                cursor: pointer;
+            }
+            .pad {padding: 20px;}
+            input {margin: 8px 0px;}
+            .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+        </style>
+        <title>Url Shortner Project developed by "The Learning Setu"</title>
+    </head>
+
+    <body>
+          <div>
+          <div class="row" style="width:100%;">
+            <div class="col-2"> </div>
+            <div class="col-8 pad text-center">
+                <div>
+
+                  <br>
+                <h2>Chhota</h2> 
+                <h3 style="font-weight: 400;">Free and reliable url shortener</h3>   
+                </div>
+                <br />
+            <div>
+                <input id="url" type="text" placeholder="Enter your url here.." />
+
+                <button onclick="myFunction()">Click me</button>
+
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <div id="main-content"></div>
+                    </div>
+                  
+                  </div>
+
+                <!-- <a onlick="myFunction()" class="button outline primary"> Submit </a> -->
+
+                <div id="demo"></div>
+            </div>
+            </div>
+
+            <div class="col-2"> </div>
+          </div>
+          </div>
+
+          <script>
+
+            function myFunction() {
+              
+              let x = document.getElementById("url").value;
+              let root_url = window.location.origin;
+              let url = root_url+"/create/?url="+x; 
+              fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "block";
+                    var main = document.getElementById("main-content");
+                    main.innerHTML = `<div style="padding:30px"> Your short url is here. Copy and Share : <br> <a target="blank" href=${root_url+'/'+data.fields.code}> ${root_url+'/'+data.fields.code} </a></div>`
+                })
+                .catch(error => console.error(error));
+
+                    }
+var modal = document.getElementById("myModal");
+
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+            </script>
+
+
+    </body>
+
+</html>
