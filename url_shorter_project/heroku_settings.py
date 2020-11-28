@@ -28,7 +28,8 @@ def find_or_create_secret_key():
         return SECRET_KEY
 
 
-ALLOWED_HOSTS += ['chhotaurl.herokuapp.com', 'chhota.buzz', ]
+ALLOWED_HOSTS += ['chhotaurl.herokuapp.com',
+                  'chhota.buzz', 'www.chhota.buzz', ]
 
 SECRET_KEY = find_or_create_secret_key()
 
