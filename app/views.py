@@ -28,4 +28,4 @@ def redirect_to_main_url(request, code):
         main_url = obj.main_url
         return redirect(main_url)
     except:
-        return Http404("Link does not exist")
+        return render(request, 'error.html')

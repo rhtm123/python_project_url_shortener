@@ -105,7 +105,7 @@
                     var modal = document.getElementById("myModal");
                     modal.style.display = "block";
                     var main = document.getElementById("main-content");
-                    main.innerHTML = `<div style="padding:30px"> Your short url is here. Copy and Share : <br> <a target="blank" href=${root_url+'/'+data.fields.code}> ${root_url+'/'+data.fields.code} </a></div>`
+                    main.innerHTML = `<div style="padding:30px"> Your short url is here. Copy and Share : <br> <a target="blank" href=${root_url+'/'+data.fields.code}> ${root_url.split('//')[1]+'/'+data.fields.code} </a></div>`
                 })
                 .catch(error => console.error(error));
 
